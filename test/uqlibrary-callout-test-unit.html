@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>uqlibrary-callout</title>
+
+    <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../elements/uqlibrary-callout.html">
+
+</head>
+<body>
+
+<test-fixture id="basic">
+    <template>
+        <uqlibrary-callout></uqlibrary-callout>
+    </template>
+</test-fixture>
+
+<script>
+    var items = {
+        "items": [
+            {
+                "label": "FAQ",
+                "icon": "communication:import-contacts",
+                "link": "https://phone-numbers/",
+                "linkMobile": "tel: 1300 000 000",
+                "disabled": "chat-offline"
+            },
+            {
+                "label": "Chat",
+                "icon": "communication:chat",
+                "link": "http://chat.library.uq.edu.au/"
+            }
+        ],
+        "summary": {
+            "label": "More ways to contact us",
+            "link": "https://www.library.uq.edu.au/contact-us"
+        }
+    };
+
+    suite('<uqlibrary-callout> tests', function () {
+        var element;
+
+        setup(function () {
+            element = fixture('basic');
+        });
+
+
+        test('It should load data', function (done) {
+            element.addEventListener('uqlibrary-callout-loaded', function(){
+                assert.equal(element.menuItems.length, items.items.length);
+                assert.equal(element.summary, items.summary);
+                assert.equal(element.menuItems[0].link, items.items[0].link);
+
+                done();
+            });
+
+            element.menu = items;
+        });
+    });
+</script>
+
+</body>
+</html>

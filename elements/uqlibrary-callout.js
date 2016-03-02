@@ -43,6 +43,20 @@
       _chatStatusUrl: {
         type: String,
         value: "https://api2.libanswers.com/1.0/chat/widgets/status/1871"
+      },
+      /**
+       * Internal check whether the chat status has been loaded
+       */
+      _chatStatusLoaded: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Internal check whether the menu items have been loaded.
+       */
+      _menuItemsLoaded: {
+        type: Boolean,
+        value: false
       }
     },
     ready: function () {
@@ -85,6 +99,7 @@
      * @private
      */
     _parseJSON: function (json) {
+      this._menuItemsLoaded = true;
       this.menuItems = json.items;
       this.summary = json.summary;
     },
@@ -131,6 +146,7 @@
       xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
           var json = JSON.parse(xobj.responseText);
+          self._chatStatusLoaded = true;
           self._chatOnline = json.online;
         }
       };
@@ -148,6 +164,10 @@
         } else {
           item.isDisabled = false;
         }
+      }
+
+      if (this._menuItemsLoaded && this._chatStatusLoaded) {
+        this.fire("uqlibrary-callout-loaded");
       }
     }
   });

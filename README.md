@@ -1,3 +1,5 @@
+[ ![Codeship Status for uqlibrary/uqlibrary-callout](https://codeship.com/projects/50a31000-c2f3-0133-5d4e-7e8bd0c2c793/status?branch=master)](https://codeship.com/projects/137960)
+
 # uqlibrary-callout
 
 A simple element that provides the markup for a UQ Library styled call out. 
@@ -28,7 +30,8 @@ HTMLImports.whenReady(function () {
         "items": [
             {
                 "label": "FAQ",
-                "link": "http://faq.com"
+                "link": "http://faq.com",
+                "linkMobile": "tel: +61235611"
             }
         ],
         "summary": {
@@ -39,5 +42,6 @@ HTMLImports.whenReady(function () {
 });
 ```
 
-## Special Options
-- 
+## Special Item Properties
+- linkMobile: Replaces the main "link" on mobile devices
+- disabled: Condition that determines whether the item is enabled. Currently only supports "chat-offline"
