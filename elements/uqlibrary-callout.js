@@ -131,17 +131,18 @@
       // Mock
       if (document.cookie.indexOf("UQLMockData") >= 0) {
         self._chatOnline = true;
+        return
+      } else {
+        var xobj = new XMLHttpRequest();
+        xobj.open('GET', this._chatStatusUrl, true);
+        xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == "200") {
+            var json = JSON.parse(xobj.responseText);
+            self._chatOnline = json.online;
+          }
+        };
+        xobj.send(null);
       }
-
-      var xobj = new XMLHttpRequest();
-      xobj.open('GET', this._chatStatusUrl, true);
-      xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-          var json = JSON.parse(xobj.responseText);
-          self._chatOnline = json.online;
-        }
-      };
-      xobj.send(null);
     },
     /**
      * Called when the chat status has changed. Updates all items' disabled status
