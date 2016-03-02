@@ -1,6 +1,4 @@
-[ ![Codeship Status for uqlibrary/uqlibrary-callout](https://codeship.com/projects/50a31000-c2f3-0133-5d4e-7e8bd0c2c793/status?branch=master)](https://codeship.com/projects/137960)
-
-# uqlibrary-callout
+# uqlibrary-callout [ ![Codeship Status for uqlibrary/uqlibrary-callout](https://codeship.com/projects/50a31000-c2f3-0133-5d4e-7e8bd0c2c793/status?branch=master)](https://codeship.com/projects/137960)
 
 A simple element that provides the markup for a UQ Library styled call out. 
 
