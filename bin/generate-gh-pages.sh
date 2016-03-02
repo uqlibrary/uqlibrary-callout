@@ -8,6 +8,7 @@
 # Get repo from DIR name
 cd `dirname "${BASH_SOURCE[0]}"`;
 REPO="$(basename `git rev-parse --show-toplevel`)";
+# REPO="uqlibrary-element"
 
 ORG="uqlibrary";
 
@@ -27,10 +28,7 @@ git checkout --orphan gh-pages
 # Remove all non-relevant content
 git rm -rf .gitignore
 git rm -rf bin
-#git rm -rf test
-
-# Change bower paths
-sed -i -e 's#../../#../bower_components/#g' element/polymer-carousel.html
+git rm -rf test
 
 # Bower install
 bower cache clean $REPO # ensure we're getting the latest from the desired branch.
