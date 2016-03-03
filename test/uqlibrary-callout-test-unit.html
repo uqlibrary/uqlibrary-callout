@@ -62,6 +62,39 @@
 
             element.menu = items;
         });
+
+        test('It should disable buttons that are "chat-offline"', function (done) {
+            element.addEventListener('uqlibrary-callout-loaded', function(){
+                setTimeout(function () {
+                    var faqButton = element.querySelector('.button-callout:nth-child(1)');
+                    var chatButton = element.querySelector('.button-callout:nth-child(2)');
+
+                    assert.equal(faqButton.getAttribute('aria-disabled'), "true");
+                    assert.equal(chatButton.getAttribute('aria-disabled'), "false");
+
+                    done();
+                }, 1);
+
+            });
+
+            element._chatOnline = false;
+            element.menu = items;
+        });
+
+        test('It should not show the summary if no summary is given to the element', function (done) {
+            element.addEventListener('uqlibrary-callout-loaded', function(){
+                setTimeout(function () {
+                    var summary = element.querySelector('.summary');
+
+                    assert.equal(summary, null);
+
+                    done();
+                }, 1);
+
+            });
+            delete items.summary;
+            element.menu = items;
+        })
     });
 </script>
 

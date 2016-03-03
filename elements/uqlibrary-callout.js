@@ -176,7 +176,7 @@
 
       // Mock
       if (document.cookie.indexOf("UQLMockData") >= 0) {
-        self._chatOnline = true;
+        self._chatOnline = false;
         return
       } else {
         var xobj = new XMLHttpRequest();
