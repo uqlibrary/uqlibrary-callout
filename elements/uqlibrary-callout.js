@@ -135,10 +135,17 @@
 
       window.location = this._link(e.model.item);
     },
+    /**
+     * Called when the summary is clicked
+     * @param e
+     * @private
+     */
     _summaryClicked: function (e) {
       this.fire("uqlibrary-callout-summary-clicked", this.summary);
 
-      window.location = this.summary.link;
+      if (this.summary.link) {
+        window.location = this.summary.link;
+      }
     },
     /**
      * Returns whether the user is on a mobile device
