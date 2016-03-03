@@ -135,6 +135,11 @@
 
       window.location = this._link(e.model.item);
     },
+    _summaryClicked: function (e) {
+      this.fire("uqlibrary-callout-summary-clicked", this.summary);
+
+      window.location = this.summary.link;
+    },
     /**
      * Returns whether the user is on a mobile device
      * @returns {boolean}

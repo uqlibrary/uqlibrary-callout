@@ -28,11 +28,13 @@ Example:
             .main {
                 max-width: 280px;
                 margin-top: 10px;
+                margin-bottom: 5px;
                 border: 1px solid var(--border-color);
                 position: relative;
                 background-color: #FFF;
                 box-shadow: 0 2px 10px rgba(0,0,0,.3);
                 -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.3);
+                box-sizing: border-box;
 
                 @apply(--uqlibrary-callout-menu);
             }
@@ -44,15 +46,24 @@ Example:
                 @apply(--layout-wrap);
             }
 
-            .callout-summary {
+            .summary {
                 border-top: 1px solid var(--border-color);
                 text-align: center;
                 display: block;
                 width: 100%;
-                padding: 10px;
                 box-sizing: border-box;
                 text-transform: uppercase;
                 color: var(--theme-color);
+            }
+
+            .summary paper-button {
+                border-radius: 0;
+                width: 100%;
+                margin: 0;
+            }
+
+            .summary .button-small {
+                padding: 0;
             }
 
             paper-button {
@@ -127,7 +138,15 @@ Example:
 
             <!-- Summary -->
             <template is="dom-if" if="{{summary}}">
-                <a class="callout-summary" href$="{{summary.link}}" title$="{{summary.label}}" aria-label$="{{summary.label}}">{{summary.label}}</a>
+                <div class="summary">
+                    <paper-button
+                            class="button-colored-theme inverse"
+                            title$="{{summary.label}}"
+                            aria-label$="{{summary.label}}"
+                            on-tap="_summaryClicked">
+                        <div class="button-small">{{summary.label}}</div>
+                    </paper-button>
+                </div>
             </template>
         </div>
 
