@@ -60,6 +60,9 @@
         type: String,
         value: "https://api2.libanswers.com/1.0/chat/widgets/status/1871"
       },
+      /**
+       * Internal property that holds the class for the arrow
+       */
       _arrowClass: {
         type: String,
         value: ""

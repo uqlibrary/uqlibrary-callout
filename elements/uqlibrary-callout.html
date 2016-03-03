@@ -81,44 +81,41 @@ Example:
             }
 
             /** Arrow Top Style **/
-            @media (min-width: 360px) {
-                .arrow:before, .arrow:after {
-                    bottom: 100%;
-                    border: solid transparent;
-                    content: " ";
-                    height: 0;
-                    width: 0;
-                    position: absolute;
-                    pointer-events: none;
-                }
-
-                .arrow.center:after, .arrow.center:before {
-                    left: 50%;
-                }
-
-                .arrow.left:after, .arrow.left:before {
-                    left: 10%;
-                }
-
-                .arrow.right:after, .arrow.right:before {
-                    left: 90%;
-                }
-
-                .arrow:after {
-                    border-color: rgba(255, 255, 255, 0);
-                    border-bottom-color: #FFF;
-                    border-width: 10px;
-                    margin-left: -10px;
-                }
-
-                .arrow:before {
-                    border-color: transparent;
-                    border-bottom-color: var(--border-color);
-                    border-width: 12px;
-                    margin-left: -12px;
-                }
+            .arrow:before, .arrow:after {
+                bottom: 100%;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
             }
 
+            .arrow.center:after, .arrow.center:before {
+                left: 50%;
+            }
+
+            .arrow.left:after, .arrow.left:before {
+                left: 10%;
+            }
+
+            .arrow.right:after, .arrow.right:before {
+                left: 90%;
+            }
+
+            .arrow:after {
+                border-color: rgba(255, 255, 255, 0);
+                border-bottom-color: #FFF;
+                border-width: 10px;
+                margin-left: -10px;
+            }
+
+            .arrow:before {
+                border-color: transparent;
+                border-bottom-color: var(--border-color);
+                border-width: 12px;
+                margin-left: -12px;
+            }
         </style>
 
         <div class$="main {{_arrowClass}}">
