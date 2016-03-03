@@ -34,14 +34,16 @@
        */
       arrow: {
         type: Boolean,
-        value: true
+        value: true,
+        observer: "_generateArrowClass"
       },
       /**
        * Where the arrow should sit on the horizontal axis. "left", "center", "right"
        */
       arrowHorizontalAlign: {
         type: String,
-        value: "center"
+        value: "center",
+        observer: "_generateArrowClass"
       },
       /**
        * Whether the chat is online
@@ -70,6 +72,13 @@
         this._fromJSONFile(this.jsonFile);
       }
 
+      this._generateArrowClass();
+    },
+    /**
+     * Generates the arrow class
+     * @private
+     */
+    _generateArrowClass: function () {
       if (this.arrow) {
         this._arrowClass = " arrow " + this.arrowHorizontalAlign;
       }
