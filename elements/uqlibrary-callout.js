@@ -30,6 +30,20 @@
         type: String
       },
       /**
+       * Whether to display an arrow
+       */
+      arrow: {
+        type: Boolean,
+        value: true
+      },
+      /**
+       * Where the arrow should sit on the horizontal axis. "left", "center", "right"
+       */
+      arrowHorizontalAlign: {
+        type: String,
+        value: "center"
+      },
+      /**
        * Whether the chat is online
        */
       _chatOnline: {
@@ -43,6 +57,10 @@
       _chatStatusUrl: {
         type: String,
         value: "https://api2.libanswers.com/1.0/chat/widgets/status/1871"
+      },
+      _arrowClass: {
+        type: String,
+        value: ""
       }
     },
     ready: function () {
@@ -50,6 +68,10 @@
 
       if (this.jsonFile) {
         this._fromJSONFile(this.jsonFile);
+      }
+
+      if (this.arrow) {
+        this._arrowClass = " arrow " + this.arrowHorizontalAlign;
       }
     },
     /**
