@@ -84,6 +84,8 @@
     _generateArrowClass: function () {
       if (this.arrow) {
         this._arrowClass = " arrow " + this.arrowHorizontalAlign;
+      } else {
+        this._arrowClass = "";
       }
     },
     /**
