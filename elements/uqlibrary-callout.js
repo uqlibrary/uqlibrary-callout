@@ -17,6 +17,13 @@
         type: Object
       },
       /**
+       * Width of the main container
+       */
+      containerWidth: {
+        type: Number,
+        value: 280
+      },
+      /**
        * JSON Menu object
        */
       menu: {

@@ -26,7 +26,6 @@ Example:
             }
 
             .main {
-                max-width: 280px;
                 margin-top: 10px;
                 margin-bottom: 5px;
                 border: 1px solid var(--border-color);
@@ -118,7 +117,7 @@ Example:
             }
         </style>
 
-        <div class$="main {{_arrowClass}}">
+        <div class$="main {{_arrowClass}}" style$="width: {{containerWidth}}px">
             <div class="items">
                 <template is="dom-repeat" items="{{menuItems}}">
                     <paper-button
