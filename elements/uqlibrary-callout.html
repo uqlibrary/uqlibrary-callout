@@ -97,11 +97,11 @@ Example:
             }
 
             .arrow.left:after, .arrow.left:before {
-                left: 10%;
+                left: 20px;
             }
 
             .arrow.right:after, .arrow.right:before {
-                left: 90%;
+                left: calc(100% - 20px);
             }
 
             .arrow:after {
@@ -114,8 +114,8 @@ Example:
             .arrow:before {
                 border-color: transparent;
                 border-bottom-color: var(--border-color);
-                border-width: 12px;
-                margin-left: -12px;
+                border-width: 11px;
+                margin-left: -11px;
             }
         </style>
 
