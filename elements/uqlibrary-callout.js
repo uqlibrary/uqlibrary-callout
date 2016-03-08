@@ -154,7 +154,17 @@
     _itemClicked: function (e) {
       this.fire("uqlibrary-callout-link-clicked", e.model.item);
 
-      window.location = this._link(e.model.item);
+      // Check if this item has a custom "target" attribute
+      if (e.model.item.target) {
+        if (this._isMobile()) {
+          // On mobile we ignore the targetOptions
+          window.open(this._link(e.model.item), e.model.item.target);
+        } else {
+          window.open(this._link(e.model.item), e.model.item.target, e.model.item.targetOptions || "");
+        }
+      } else {
+        window.location = this._link(e.model.item);
+      }
     },
     /**
      * Called when the summary is clicked
