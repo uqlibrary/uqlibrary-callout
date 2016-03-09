@@ -152,7 +152,7 @@
      * @private
      */
     _itemClicked: function (e) {
-      this.fire("uqlibrary-callout-link-clicked", e.model.item);
+      this.fire("uqlibrary-callout-link-clicked", this._link(e.model.item));
 
       // Check if this item has a custom "target" attribute
       if (e.model.item.target) {
@@ -172,9 +172,8 @@
      * @private
      */
     _summaryClicked: function (e) {
-      this.fire("uqlibrary-callout-summary-clicked", this.summary);
-
       if (this.summary.link) {
+        this.fire("uqlibrary-callout-summary-clicked", this.summary.link);
         window.location = this.summary.link;
       }
     },
