@@ -204,8 +204,6 @@
         this._chatOnline = true;
         return;
       }
-      console.log('chat status response: ' + response.detail.data.online);
-
       this._chatOnline = response.detail.data.online;
     },
 
@@ -227,8 +225,6 @@
      * @private
      */
     _checkDisabledStatus: function () {
-      console.log('check status: ' + this._chatOnline + ' ' + this.menuItems.length);
-
       for (var i = 0; i < this.menuItems.length; i++) {
         var item = this.menuItems[i];
 
