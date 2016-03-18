@@ -7,8 +7,7 @@
        */
       menuItems: {
         type: Array,
-        value: [],
-        observer: '_checkDisabledStatus'
+        value: []
       },
       /**
        * Holds the summary for this call out
@@ -67,6 +66,16 @@
         type: String,
         value: "https://api2.libanswers.com/1.0/chat/widgets/status/1871"
       },
+
+      /** Timestamp for API call to prevent caching */
+      timestamp: {
+        type: Object,
+        value: function() {
+          var now = new Date();
+          return { 'timestamp' : now.getTime() };
+        }
+      },
+
       /**
        * Internal property that holds the class for the arrow
        */
@@ -76,7 +85,6 @@
       }
     },
     ready: function () {
-      this._checkChatStatus();
 
       if (this.jsonFile) {
         this._fromJSONFile(this.jsonFile);
@@ -131,6 +139,7 @@
       this.menuItems = json.items;
       this.summary = json.summary;
 
+      this._checkDisabledStatus();
       this.fire("uqlibrary-callout-loaded");
     },
     /**
@@ -185,40 +194,48 @@
     _isMobile: function () {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     },
-    /**
-     * Checks the chat status. CORS issues force a mock "true" if the mock cookie is set
-     * @private
-     */
-    _checkChatStatus: function () {
-      var self = this;
 
-      // Mock
+    /**  Processes successful chat status api response
+     * @param {Object} API call response
+     * */
+    _handleChatStatusResponse: function(response) {
+
       if (document.cookie.indexOf("UQLMockData") >= 0) {
-        self._chatOnline = true;
-        return
-      } else {
-        var xobj = new XMLHttpRequest();
-        xobj.open('GET', this._chatStatusUrl, true);
-        xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            var json = JSON.parse(xobj.responseText);
-            self._chatOnline = json.online;
-          }
-        };
-        xobj.send(null);
+        this._chatOnline = true;
+        return;
       }
+      console.log('chat status response: ' + response.detail.data.online);
+
+      this._chatOnline = response.detail.data.online;
     },
+
+    /**  Processes error chat status api response
+     * @param {Object} API call response
+     * */
+    _handleChatStatusError: function(response) {
+
+      if (document.cookie.indexOf("UQLMockData") >= 0) {
+        this._chatOnline = true;
+        return;
+      }
+
+      this.isChatOnline = false;
+    },
+
     /**
      * Called when the chat status has changed. Updates all items' disabled status
      * @private
      */
     _checkDisabledStatus: function () {
+      console.log('check status: ' + this._chatOnline + ' ' + this.menuItems.length);
+
       for (var i = 0; i < this.menuItems.length; i++) {
         var item = this.menuItems[i];
-        if (item.disabled == "chat-offline" && !this._chatOnline) {
-          item.isDisabled = true;
-        } else {
-          item.isDisabled = false;
+
+        if (item.isDisabled != (item.disabled === 'chat-offline' && !this._chatOnline)) {
+          item.isDisabled = (item.disabled === 'chat-offline' && !this._chatOnline);
+          //notify that object's property in array has changed
+          this.notifyPath('menuItems.' + i + '.isDisabled', item.isDisabled);
         }
       }
     }

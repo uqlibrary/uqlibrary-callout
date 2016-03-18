@@ -18,8 +18,7 @@ Example:
 
     <template>
         <!-- Custom styles -->
-        <style include="common-styles"></style>
-        <style>
+        <style include="common-styles">
             :host {
                 font-family: var(--font-family);
                 font-size: var(--body-font-size);
@@ -117,6 +116,14 @@ Example:
                 margin-left: -11px;
             }
         </style>
+
+        <byutv-jsonp
+                auto
+                url="{{_chatStatusUrl}}"
+                params="{{timestamp}}"
+                on-response="_handleChatStatusResponse"
+                on-error="_handleChatStatusError"
+                debounce-duration="300"></byutv-jsonp>
 
         <div class$="main {{_arrowClass}}" style$="width: {{containerWidth}}px">
             <div class="items">
