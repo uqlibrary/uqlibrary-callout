@@ -12,7 +12,7 @@
     "iron-elements": "PolymerElements/iron-elements#^1.0.0",
     "paper-elements": "PolymerElements/paper-elements#^1.0.0",
     "byutv-jsonp": "uqlibrary/byutv-jsonp#master",
-    "uqlibrary-styles": "uqlibrary/uqlibrary-styles#master"
+    "uqlibrary-styles": "uqlibrary/uqlibrary-styles#v1.0.0"
   },
   "devDependencies": {
     "web-component-tester": "*",
