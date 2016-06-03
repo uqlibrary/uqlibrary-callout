@@ -69,8 +69,12 @@ Example:
             paper-button {
                 width: 45%;
                 @apply(--uqlibrary-callout-paper-button);
+                @apply(--layout-vertical);
             }
 
+            paper-button div {
+                text-align: center;
+            }
             paper-button[disabled] .button-small, paper-button[disabled] iron-icon {
                 color: var(--theme-color-light) !important;
             }
