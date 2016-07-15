@@ -59,22 +59,6 @@
         value: false,
         observer: '_checkDisabledStatus'
       },
-      /**
-       * Url to check the status of the chat
-       */
-      _chatStatusUrl: {
-        type: String,
-        value: "https://api2.libanswers.com/1.0/chat/widgets/status/1871"
-      },
-
-      /** Timestamp for API call to prevent caching */
-      timestamp: {
-        type: Object,
-        value: function() {
-          var now = new Date();
-          return { 'timestamp' : now.getTime() };
-        }
-      },
 
       /**
        * Internal property that holds the class for the arrow
@@ -85,6 +69,12 @@
       }
     },
     ready: function () {
+      var self = this;
+      this.$.chatStatusApi.addEventListener('uqlibrary-api-chat-status-loaded', function(e) {
+        self._handleChatStatusResponse(e);
+      });
+
+      this.$.chatStatusApi.get();
 
       if (this.jsonFile) {
         this._fromJSONFile(this.jsonFile);
@@ -204,20 +194,7 @@
         this._chatOnline = true;
         return;
       }
-      this._chatOnline = response.detail.data.online;
-    },
-
-    /**  Processes error chat status api response
-     * @param {Object} API call response
-     * */
-    _handleChatStatusError: function(response) {
-
-      if (document.cookie.indexOf("UQLMockData") >= 0) {
-        this._chatOnline = true;
-        return;
-      }
-
-      this.isChatOnline = false;
+      this._chatOnline = response.detail.online;
     },
 
     /**

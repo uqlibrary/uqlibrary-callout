@@ -12,12 +12,15 @@
     "polymer": "Polymer/polymer#^1.4.0",
     "iron-elements": "PolymerElements/iron-elements#^1.0.0",
     "paper-elements": "PolymerElements/paper-elements#^1.0.0",
-    "byutv-jsonp": "uqlibrary/byutv-jsonp#master",
-    "uqlibrary-styles": "uqlibrary/uqlibrary-styles#v1.0.0"
+    "uqlibrary-styles": "uqlibrary/uqlibrary-styles#v1.0.0",
+    "uqlibrary-api": "uqlibrary/uqlibrary-api#chat_status"
   },
   "devDependencies": {
     "web-component-tester": "*",
     "test-fixture": "PolymerElements/test-fixture#^1.0.0",
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+  },
+  "resolutions": {
+    "uqlibrary-api": "chat_status"
   }
 }
