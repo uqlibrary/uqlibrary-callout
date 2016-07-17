@@ -13,7 +13,7 @@
     "iron-elements": "PolymerElements/iron-elements#^1.0.0",
     "paper-elements": "PolymerElements/paper-elements#^1.0.0",
     "uqlibrary-styles": "uqlibrary/uqlibrary-styles#v1.0.0",
-    "uqlibrary-api": "uqlibrary/uqlibrary-api#chat_status"
+    "uqlibrary-api": "uqlibrary/uqlibrary-api#v1.2.4"
   },
   "devDependencies": {
     "web-component-tester": "*",
@@ -21,6 +21,6 @@
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
   },
   "resolutions": {
-    "uqlibrary-api": "chat_status"
+    "uqlibrary-api": "^v1.2.4"
   }
 }
