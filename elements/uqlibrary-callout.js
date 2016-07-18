@@ -71,7 +71,9 @@
     ready: function () {
       var self = this;
       this.$.chatStatusApi.addEventListener('uqlibrary-api-chat-status-loaded', function(e) {
-        self._handleChatStatusResponse(e);
+        if(e.detail && e.detail.hasOwnProperty('online')) {
+          self._chatOnline = e.detail.online;
+        }
       });
 
       this.$.chatStatusApi.get();
@@ -183,18 +185,6 @@
      */
     _isMobile: function () {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    },
-
-    /**  Processes successful chat status api response
-     * @param {Object} API call response
-     * */
-    _handleChatStatusResponse: function(response) {
-
-      if (document.cookie.indexOf("UQLMockData") >= 0) {
-        this._chatOnline = true;
-        return;
-      }
-      this._chatOnline = response.detail.online;
     },
 
     /**
