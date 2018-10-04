@@ -16,8 +16,7 @@
     "uqlibrary-api": "uqlibrary/uqlibrary-api#v1.2.4"
   },
   "devDependencies": {
-    "web-component-tester": "*",
-    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+    "web-component-tester": "v5.0.1",
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
   },
   "resolutions": {

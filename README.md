@@ -41,6 +41,10 @@ HTMLImports.whenReady(function () {
 });
 ```
 
+## Testing
+
+Run web-component-tester as `wct` after bower update.
+
 ## Special Item Properties
 - linkMobile: Replaces the main "link" on mobile devices
 - disabled: Condition that determines whether the item is enabled. Currently only supports "chat-offline"
