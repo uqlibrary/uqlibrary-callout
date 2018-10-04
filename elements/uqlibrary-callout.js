@@ -83,6 +83,11 @@
       }
 
       this._generateArrowClass();
+
+      // the chat dropdown overlaps the primo results area badly at normal width - narrow it
+      if (this._isPrimoPage(window.location.hostname)) {
+          this.containerWidth = 200;
+      }
     },
     /**
      * Generates the arrow class
@@ -201,6 +206,21 @@
           this.notifyPath('menuItems.' + i + '.isDisabled', item.isDisabled);
         }
       }
+    },
+
+    _isPrimoPage: function(hostname) {
+        return (
+            this._isPrimoProdPage(hostname) || this._isPrimoSandboxPage(hostname)
+        );
+    },
+
+    _isPrimoProdPage: function(hostname) {
+        return ('search.library.uq.edu.au' === hostname);
+    },
+
+    _isPrimoSandboxPage: function(hostname) {
+        var regExp = /(.*)exlibrisgroup.com/i;
+        return regExp.test(hostname);
     }
   });
 })();
