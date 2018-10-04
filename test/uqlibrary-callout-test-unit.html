@@ -94,28 +94,7 @@
             });
             delete items.summary;
             element.menu = items;
-        });
-
-        test('if search.library recognised', function (done) {
-            var hostname = 'search.library.uq.edu.au';
-            var expected = true;
-            expect(expected).to.equal(element._isPrimoPage(hostname));
-            done();
-        });
-
-        test('if primo sandbox recognised', function (done) {
-            var hostname = 'uq-edu-primo-sb.hosted.exlibrisgroup.com';
-            var expected = true;
-            expect(expected).to.equal(element._isPrimoPage(hostname));
-            done();
-        });
-
-        test('if library homepage recognised', function (done) {
-            var hostname = 'www.library.uq.edu.au';
-            var expected = false;
-            expect(expected).to.equal(element._isPrimoPage(hostname));
-            done();
-        });
+        })
     });
 </script>
 
