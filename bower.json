@@ -1,6 +1,6 @@
 {
   "name": "uqlibrary-callout",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "keywords": [
     "seed",
     "polymer",
@@ -9,7 +9,7 @@
   "private": true,
   "main": "elements/uqlibrary-callout.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0",
+    "polymer": "Polymer/polymer#^1.11.3",
     "iron-elements": "PolymerElements/iron-elements#^1.0.0",
     "paper-elements": "PolymerElements/paper-elements#^1.0.0",
     "uqlibrary-styles": "uqlibrary/uqlibrary-styles",
@@ -17,6 +17,9 @@
   },
   "devDependencies": {
     "web-component-tester": "*",
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+    "test-fixture": "PolymerElements/test-fixture#^1.1.2"
+  },
+  "resolutions": {
+    "test-fixture": "^1.1.2"
   }
 }
