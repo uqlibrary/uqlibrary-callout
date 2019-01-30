@@ -10,14 +10,24 @@ A simple element that provides the markup for a UQ Library styled call out.
 
 For a demo and full property rundown see [GH Pages](http://uqlibrary.github.io/uqlibrary-callout/uqlibrary-callout/).
 
+## Getting Started
+
+Install Node.JS and run the following:
+
+```sh
+npm install -g bower web-component-tester polymer-cli
+npm install
+bower install
+```
+
+### Developing
+
+- Please adhere to the Polymer code style guide provided at [Style Guide](http://polymerelements.github.io/style-guide/).
+- Colors and common styles are imported (bower install) from [uqlibrary-styles](http://github.com/uqlibrary/uqlibrary-styles).
+- A preview of the component can be viewed locally by running `npm start`. Use the second URL from the command output.
+- GitHub pages should be updated after every commit to `master` branch by running `bin/generate-gh-pages.sh`
+
 ## Usage
-
-- Install [npm](https://nodejs.org/en/download/).
-- Install bower
-
-    ```sh
-    npm install bower -g
-    ```
 
 - Install the uqlibrary-callout into your project directory
 
