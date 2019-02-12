@@ -4,14 +4,12 @@
 `<uqlibrary-callout>` is a simple element that displays a UQ Library styled "call out" popup. Menu items are supplied
 by JSON file or JSON object in the same format. See the demo for JSON examples
 
-Example:
+Examples:
 
     <uqlibrary-callout json-file="../demo/data.json"></uqlibrary-callout>
     <uqlibrary-callout menu="{{menuObjects}}"></uqlibrary-callout>
 
 @demo
-
-@demo demo/index.html
 -->
 <dom-module id="uqlibrary-callout">
 
@@ -35,14 +33,14 @@ Example:
                 -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px 0px;
                 box-sizing: border-box;
 
-                @apply(--uqlibrary-callout-menu);
+                @apply --uqlibrary-callout-menu;
             }
 
             .items {
                 padding: 15px;
-                @apply(--layout-horizontal);
-                @apply(--layout-justified);
-                @apply(--layout-wrap);
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-wrap;
             }
 
             .summary {
@@ -69,8 +67,8 @@ Example:
 
             paper-button {
                 width: 45%;
-                @apply(--uqlibrary-callout-paper-button);
-                @apply(--layout-vertical);
+                @apply --uqlibrary-callout-paper-button;
+                @apply --layout-vertical;
             }
 
             paper-button div {
