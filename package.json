@@ -1,6 +1,6 @@
 {
   "name": "uqlibrary-callout",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT",
   "main": "index.html",
   "directories": {
@@ -28,7 +28,7 @@
     "web-component-tester": "*"
   },
   "engines": {
-    "npm": "^6.5.0",
-    "node": "^11.8.0"
+    "npm": "^6",
+    "node": "11.10.1"
   }
 }

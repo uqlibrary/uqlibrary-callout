@@ -1,11 +1,7 @@
 {
   "name": "uqlibrary-callout",
-  "version": "1.0.8",
-  "keywords": [
-    "seed",
-    "polymer",
-    "web-components"
-  ],
+  "version": "1.0.9",
+  "keywords": ["seed", "polymer", "web-components"],
   "private": true,
   "main": "elements/uqlibrary-callout.html",
   "dependencies": {
