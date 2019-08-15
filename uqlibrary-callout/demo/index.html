@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>uqlibrary-callout</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../../paper-menu-button/paper-menu-button.html">
+    <link rel="import" href="../elements/uqlibrary-callout.html">
+
+    <link rel="import" href="paper-menu-button-styles.html">
+    <link rel="import" href="../../uqlibrary-styles/common-styles.html">
+    <style is="custom-style" include="paper-menu-button-styles"></style>
+    <style is="custom-style" include="common-styles"></style>
+</head>
+<body class="fullbleed">
+
+<div class="layout">
+    <div style="margin: 0 auto; width: 800px;">
+        <strong>Inline:</strong><br />
+        <uqlibrary-callout json-file="../demo/data.json" arrow-horizontal-align="right"></uqlibrary-callout>
+
+        <br /><br />
+        <strong>Or in a paper button:</strong><br />
+        <paper-menu-button vertical-offset="75" horizontal-offset="-78">
+            <!-- Icon -->
+            <paper-button class="dropdown-trigger button-colored-theme" role="button" tabindex="0" elevation="0">
+                <iron-icon icon="communication:forum" aria-label="Library Ask Us"></iron-icon>
+                <div class="button-small inverse">Ask Us</div>
+            </paper-button>
+
+
+            <!-- Call out menu -->
+            <div class="dropdown-content">
+                <uqlibrary-callout id="callout"></uqlibrary-callout>
+            </div>
+        </paper-menu-button>
+        <br /><br />
+
+        <strong>Example JSON:</strong> <br />
+        <code>
+            {<br />
+            &emsp;"items": [ <br />
+            &emsp;&emsp;{<br />
+            &emsp;&emsp;&emsp;"label": "FAQ",<br />
+            &emsp;&emsp;&emsp;"icon": "communication:import-contacts",<br />
+            &emsp;&emsp;&emsp;"link": "https://phone-numbers/",<br />
+            &emsp;&emsp;&emsp;"linkMobile": "tel: 1300 000 000",<br />
+            &emsp;&emsp;&emsp;"disabled": "chat-offline",<br />
+            &emsp;&emsp;&emsp;"target": "_blank"<br />
+            &emsp;&emsp;&emsp;"targetOptions": "width=400, height=400"<br />
+            &emsp;&emsp;},<br />
+            &emsp;],<br />
+            &emsp;"summary": {<br />
+            &emsp;&emsp;"label": "More ways to contact us",<br />
+            &emsp;&emsp;"link": "https://www.library.uq.edu.au/contact-us"<br />
+            &emsp;}<br />
+            }
+        </code>
+    </div>
+</div>
+
+<script>
+    (function () {
+//        document.cookie="UQLMockData=enabled";
+//        document.cookie="UQLMockData-PType=1";
+
+        HTMLImports.whenReady(function () {
+            var callout = document.querySelector('#callout');
+
+            var xobj = new XMLHttpRequest();
+            xobj.open('GET', "data.json", true);
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+                    callout.menu = JSON.parse(xobj.responseText);
+                }
+            };
+            xobj.send(null);
+        });
+    }());
+</script>
+</body>
+</html>

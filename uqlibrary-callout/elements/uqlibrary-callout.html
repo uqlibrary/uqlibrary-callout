@@ -1,0 +1,154 @@
+<link rel="import" href="elements.html">
+
+<!--
+`<uqlibrary-callout>` is a simple element that displays a UQ Library styled "call out" popup. Menu items are supplied
+by JSON file or JSON object in the same format. See the demo for JSON examples
+
+Examples:
+
+    <uqlibrary-callout json-file="../demo/data.json"></uqlibrary-callout>
+    <uqlibrary-callout menu="{{menuObjects}}"></uqlibrary-callout>
+
+@demo
+-->
+<dom-module id="uqlibrary-callout">
+
+    <template>
+        <uqlibrary-api-chat-status id="chatStatusApi"></uqlibrary-api-chat-status>
+
+        <!-- Custom styles -->
+        <style include="common-styles">
+            :host {
+                font-family: var(--font-family);
+                font-size: var(--body-font-size);
+            }
+
+            .main {
+                margin-top: 10px;
+                margin-bottom: 5px;
+                border: 1px solid var(--border-color);
+                position: relative;
+                background-color: #FFF;
+                box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px 0px;
+                -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px 0px;
+                box-sizing: border-box;
+
+                @apply --uqlibrary-callout-menu;
+            }
+
+            .items {
+                padding: 15px;
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-wrap;
+            }
+
+            .summary {
+                border-top: 1px solid var(--border-color);
+                text-align: center;
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                text-transform: uppercase;
+                color: var(--theme-color);
+            }
+
+            .summary paper-button {
+                border-radius: 0;
+                width: 100%;
+                margin: 0;
+                line-height: 40px;
+                padding: 0;
+            }
+
+            .summary .button-small {
+                padding: 0;
+            }
+
+            paper-button {
+                width: 45%;
+                @apply --uqlibrary-callout-paper-button;
+                @apply --layout-vertical;
+            }
+
+            paper-button div {
+                text-align: center;
+            }
+            paper-button[disabled] .button-small, paper-button[disabled] iron-icon {
+                color: var(--theme-color-light) !important;
+            }
+
+            paper-button[disabled]:hover {
+                background-color: var(--text-color-inverse) !important;
+            }
+
+            /** Arrow Top Style **/
+            .arrow:before, .arrow:after {
+                bottom: 100%;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .arrow.center:after, .arrow.center:before {
+                left: 50%;
+            }
+
+            .arrow.left:after, .arrow.left:before {
+                left: 20px;
+            }
+
+            .arrow.right:after, .arrow.right:before {
+                left: calc(100% - 20px);
+            }
+
+            .arrow:after {
+                border-color: rgba(255, 255, 255, 0);
+                border-bottom-color: #FFF;
+                border-width: 10px;
+                margin-left: -10px;
+            }
+
+            .arrow:before {
+                border-color: transparent;
+                border-bottom-color: var(--border-color);
+                border-width: 11px;
+                margin-left: -11px;
+            }
+        </style>
+
+        <div class$="main {{_arrowClass}}" style$="width: {{containerWidth}}px">
+            <div class="items">
+                <template is="dom-repeat" items="{{menuItems}}">
+                    <paper-button
+                            aria-label$="{{item.label}}"
+                            class="button-callout button-colored-theme inverse"
+                            disabled$="{{item.isDisabled}}"
+                            role="button"
+                            on-click="_itemClicked">
+                        <iron-icon icon="{{item.icon}}"></iron-icon>
+                        <div class="button-small">{{item.label}}</div>
+                    </paper-button>
+                </template>
+            </div>
+
+            <!-- Summary -->
+            <template is="dom-if" if="{{summary}}">
+                <div class="summary">
+                    <paper-button
+                            class="button-colored-theme inverse"
+                            title$="{{summary.label}}"
+                            aria-label$="{{summary.label}}"
+                            on-tap="_summaryClicked">
+                        <div class="button-small">{{summary.label}}</div>
+                    </paper-button>
+                </div>
+            </template>
+        </div>
+
+    </template>
+    <script src="uqlibrary-callout.js"></script>
+</dom-module>
